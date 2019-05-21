@@ -10,10 +10,15 @@
 #            
  
 TARGLC = main
+TRAGMN = mnist
 
 # Put your compiler and basic compile options here
+CPP      = g++
 CC       = gcc
 CFLAGS   = -Wall
+
+# OPENCV options here
+OPENCV = `pkg-config --cflags --libs opencv`
 
 # LAPACK and BLAS compile and link options here!
 BLLIB  = -lblas
@@ -28,5 +33,8 @@ all : $(TARGETS)
 main : main.c
 	$(CC) $(CFLAGS) main.c -lm $(BLLIB)  $(LPLIB) -o main
 
+mnist : mnist.c
+	$(CPP) $(CFLAGS) mnist.c -o mnist $(OPENCV)
+
 clean :
-	rm -rf a.out *~ *.bak $(TARGLC)
+	rm -rf a.out *~ *.bak $(TARGLC) $(TRAGMN)
