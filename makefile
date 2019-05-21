@@ -1,8 +1,8 @@
 ##
 # @file      makefile
-# @author    Mitch Richling <https://www.mitchr.me/>
-# @Copyright Copyright 1997,2014 by Mitch Richling.  All rights reserved.
-# @brief     Simple make file to build the examples in this directory.@EOL
+# @author    Agnus Horta 
+# @Copyright Copyright 2019 by Agnus Horta.  All rights reserved.
+# @brief     Simple make file to build the Linear Classifier.@EOL
 # @Keywords  
 # @Std       GenericMake
 #
@@ -15,22 +15,17 @@ TARGLC = main
 CC       = gcc
 CFLAGS   = -Wall
 
-# Put your Fortran 77 LAPACK and BLAS compile and link options here!
-# What is below works on my stock Debian box, and works on my OS X
-# 10.9.2 system when I comment out the first three and uncomment
-# APLKRZ.
+# LAPACK and BLAS compile and link options here!
 BLLIB  = -lblas
 LPLIB  = -llapacke
 LPINC  = -I/usr/include/atlas
-#APLKRZ  = -framework Accelerate 
 
-# You will need a Fortran compiler for the TARG*F targets.
 TARGETS = $(TARGLC) 
 
 all : $(TARGETS)
 	@echo Make Complete
 
-lc : main.c
+main : main.c
 	$(CC) $(CFLAGS) main.c -lm $(BLLIB)  $(LPLIB) -o main
 
 clean :
